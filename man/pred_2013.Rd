@@ -3,14 +3,36 @@
 \docType{data}
 \name{pred_2013}
 \alias{pred_2013}
-\title{pred_2013}
+\title{Grid Prediction 2013}
 \format{
-
+A data frame with 1445462 rows and 17 variables:
+\describe{
+  \item{\code{Longitude}}{double }
+  \item{\code{Latitude}}{double }
+  \item{\code{CountryName}}{character }
+  \item{\code{ISO3}}{character }
+  \item{\code{GBDRegion}}{character }
+  \item{\code{GBDSuperRegion}}{character }
+  \item{\code{SDGRegion}}{character }
+  \item{\code{WHORegion}}{character }
+  \item{\code{WHOIncomeRegion}}{character }
+  \item{\code{POP}}{double }
+  \item{\code{Urban}}{double }
+  \item{\code{Mean}}{double }
+  \item{\code{Median}}{double }
+  \item{\code{Lower95}}{double }
+  \item{\code{Upper95}}{double }
+  \item{\code{StdDev}}{double }
+  \item{\code{Year}}{double }
+}
 }
 \usage{
 pred_2013
 }
 \description{
 DIMAWQ model predictions provide estimates of annual concentrations to PM2.5 at 0.1° × 0.1° high spatial resolution, which equates to approximately 11x11km at the equator globally.
+}
+\details{
+For further details, see \url{https://www.who.int/data/gho/data/themes/air-pollution/who-modelled-estimates-of-air-pollution-from-particulate-matter}
 }
 \keyword{datasets}

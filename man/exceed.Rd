@@ -3,24 +3,25 @@
 \docType{data}
 \name{exceed}
 \alias{exceed}
-\title{exceed}
+\title{Global Exceedance Data}
 \format{
-A data frame with seventeen variables:
+A data frame with 23548 rows and 6 variables:
 \describe{
-\item{\code{ID}}{Name of Category: Country, GDB Region, GDB Super Region, Global, SDG Region, WHO Income Region, WHO Region e.g. Algeria or Western Asia and Northern Africa}
-\item{\code{UrbanRural}}{Urban, Rural or Overall land classifcation}
-\item{\code{Category}}{Type of Category: Country, GDB Region, GDB Super Region, Global, SDG Region, WHO Income Region, WHO Region}
-\item{\code{Year}}{According year}
-\item{\code{Value}}{Level of exposure}
-\item{\code{Scale}}{Exceedance scale}
+  \item{\code{ID}}{character }
+  \item{\code{UrbanRural}}{character }
+  \item{\code{Category}}{character }
+  \item{\code{Year}}{double }
+  \item{\code{Value}}{double }
+  \item{\code{Scale}}{double }
 }
-
-For further details, see \url{https://www.who.int/data/gho/data/themes/air-pollution/who-modelled-estimates-of-air-pollution-from-particulate-matter}
 }
 \usage{
 exceed
 }
 \description{
-DIMAWQ model predictions provide estimates of annual concentrations to PM2.5 at 0.1° × 0.1° high spatial resolution, which equates to approximately 11x11km at the equator globally.
+Contains yearly pm2.5 exceedance at 10,15,25.30 scale
+}
+\details{
+For further details, see \url{https://www.who.int/data/gho/data/themes/air-pollution/who-modelled-estimates-of-air-pollution-from-particulate-matter}
 }
 \keyword{datasets}

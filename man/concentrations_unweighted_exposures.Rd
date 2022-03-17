@@ -3,28 +3,29 @@
 \docType{data}
 \name{concentrations_unweighted_exposures}
 \alias{concentrations_unweighted_exposures}
-\title{concentrations_unweighted_exposures}
+\title{Concentrations Exposure Data}
 \format{
-A data frame with seventeen variables:
+A data frame with 10123 rows and 10 variables:
 \describe{
-\item{\code{byvar}}{Name of Category: Country, GDB Region, GDB Super Region, Global, SDG Region, WHO Income Region, WHO Region e.g. Algeria or Western Asia and Northern Africa}
-\item{\code{LowerCI}}{Lower confidence interval}
-\item{\code{UpperCI}}{Upper confidence interval}
-\item{\code{Mean}}{Mean}
-\item{\code{Median}}{Median}
-\item{\code{LowerPI}}{}
-\item{\code{UpperPI}}{}
-\item{\code{Year}}{According year}
-\item{\code{UrbanRural}}{Urban, Rural or Overall land classifcation}
-\item{\code{name}}{Country, GDB Region, GDB Super Region, Global, SDG Region, WHO Income Region, WHO Region}
+  \item{\code{byvar}}{character }
+  \item{\code{LowerCI}}{double }
+  \item{\code{UpperCI}}{double }
+  \item{\code{Mean}}{double }
+  \item{\code{Median}}{double }
+  \item{\code{LowerPI}}{double }
+  \item{\code{UpperPI}}{double }
+  \item{\code{Year}}{character }
+  \item{\code{UrbanRural}}{character }
+  \item{\code{name}}{character }
 }
-
-For further details, see \url{https://www.who.int/data/gho/data/themes/air-pollution/who-modelled-estimates-of-air-pollution-from-particulate-matter}
 }
 \usage{
 concentrations_unweighted_exposures
 }
 \description{
-DIMAWQ model predictions provide estimates of annual concentrations to PM2.5 at 0.1° × 0.1° high spatial resolution, which equates to approximately 11x11km at the equator globally.
+Contains yearly pm2.5 measurements for countries and regions
+}
+\details{
+For further details, see \url{https://www.who.int/data/gho/data/themes/air-pollution/who-modelled-estimates-of-air-pollution-from-particulate-matter}
 }
 \keyword{datasets}

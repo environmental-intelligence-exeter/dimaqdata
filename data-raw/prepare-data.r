@@ -1,10 +1,10 @@
-##################################################################
-##       AIM: Transform data-raw for RShiny visualisation       ##
-##################################################################
-# CHARTS
+#################################################################
+##             AIM: TRANSFORM RAW DATA FOR USETHIS             ##
+#################################################################
+
 
 ##################################################################
-##                        Concentrations                        ## done
+##                        Concentrations                        ##
 ##################################################################
 # Read exposures data
 load("data-raw/Concentrations/UnweightedCountryExposures.RData")
@@ -59,11 +59,11 @@ rm(
 )
 
 concentrations_unweighted_exposures = rbind(concentrations_unweighted_exposures,concentrations_unweighted_exposures_diff)
-
+rm(concentrations_unweighted_exposures_diff)
 usethis::use_data(concentrations_unweighted_exposures, overwrite = TRUE)
 
 #################################################################
-##                         Exceedances                         ## done
+##                         Exceedances                         ##
 #################################################################
 #10
 load("data-raw/Exceedances/10/Country.RData")
@@ -255,25 +255,27 @@ weighted_exposures_diff = rbind(
   WeightedSDGRegion_diff %>% mutate(Category = "SDG Region"),
   WeightedWHOIncomeRegion_diff %>% mutate(Category = "WHO Income Region"),
   WeightedWHORegion_diff %>% mutate(Category = "WHO Region")
-)
+) %>% mutate(Type = "Population-weighted concentrations differnce")
 
 rm(WeightedCountry_diff,WeightedGBDRegion_diff,WeightedGBDSuperRegion_diff,
    WeightedGlobal_diff,WeightedSDGRegion_diff,WeightedWHOIncomeRegion_diff,WeightedWHORegion_diff)
 
-
-
+population_weighted_concentrations = rbind(weighted_exposures,weighted_exposures_diff)
+rm(weighted_exposures,weighted_exposures_diff)
+usethis::use_data(population_weighted_concentrations, overwrite = TRUE)
 #################################################################
-##                       Ground monitors                       ## done
-#################################################################
-
-#load("data-raw/Ground monitors/GM_dat.RData")
-
-# MAPS
-
-#################################################################
-##                   Read Gridded prediction                   ## done
+##                       Ground monitors                       ##
 #################################################################
 
+load("data-raw/Ground monitors/GM_dat.RData")
+ground_monitors = GM_dat
+rm(GM_dat)
+usethis::use_data(ground_monitors, overwrite = TRUE)
+
+#################################################################
+##                   Read Gridded prediction                   ##
+#################################################################
+# NOTE: Due to the size of the joined data, each year is added indivdually and can be accessed throught the pred_all() function
 # Read data
 load("data-raw/Gridded predictions/pred_2016.RData")
 usethis::use_data(pred_2016, overwrite = TRUE)
@@ -287,13 +289,7 @@ load("data-raw/Gridded predictions/pred_2012.RData")
 usethis::use_data(pred_2012, overwrite = TRUE)
 load("data-raw/Gridded predictions/pred_2011.RData")
 usethis::use_data(pred_2011, overwrite = TRUE)
-# Bind data
-grid_prediction = rbind(pred_2011,
-                        pred_2012,
-                        pred_2013,
-                        pred_2014,
-                        pred_2015,
-                        pred_2016)
+
 # Clear environment
 rm(pred_2011,
    pred_2012,
@@ -303,7 +299,8 @@ rm(pred_2011,
    pred_2016)
 
 ##################################################################
-##                          Shapefiles                          ## done
+##                          Shapefiles                          ##
 ##################################################################
 
-#load("data-raw/Shapefiles/shapefiles.RData")
+who_world_map = readRDS("data-raw/Shapefiles/who_world_sf.RDS")
+usethis::use_data(who_world_map, overwrite = TRUE)
