@@ -247,16 +247,18 @@ load("data-raw/Exposures/WeightedSDGRegionExposures_Changes.RData")
 load("data-raw/Exposures/WeightedWHOIncomeRegionExposures_Changes.RData")
 load("data-raw/Exposures/WeightedWHORegionExposures_Changes.RData")
 
-weighted_exposures = rbind(
-  WeightedCountry %>% mutate(Category = "Country"),
-  WeightedGBDRegion %>% mutate(Category = "GBD Region"),
-  WeightedGBDSuperRegion %>% mutate(Category = "GBD Super Region"),
-  WeightedGlobal %>% mutate(Category = "Global"),
-  WeightedSDGRegion %>% mutate(Category = "SDG Region"),
-  WeightedWHOIncomeRegion %>% mutate(Category = "WHO Income Region"),
-  WeightedWHORegion %>% mutate(Category = "WHO Region")
+weighted_exposures_diff = rbind(
+  WeightedCountry_diff %>% mutate(Category = "Country"),
+  WeightedGBDRegion_diff %>% mutate(Category = "GBD Region"),
+  WeightedGBDSuperRegion_diff %>% mutate(Category = "GBD Super Region"),
+  WeightedGlobal_diff %>% mutate(Category = "Global"),
+  WeightedSDGRegion_diff %>% mutate(Category = "SDG Region"),
+  WeightedWHOIncomeRegion_diff %>% mutate(Category = "WHO Income Region"),
+  WeightedWHORegion_diff %>% mutate(Category = "WHO Region")
 )
 
+rm(WeightedCountry_diff,WeightedGBDRegion_diff,WeightedGBDSuperRegion_diff,
+   WeightedGlobal_diff,WeightedSDGRegion_diff,WeightedWHOIncomeRegion_diff,WeightedWHORegion_diff)
 
 
 
