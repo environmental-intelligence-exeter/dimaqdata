@@ -6,7 +6,38 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of dimaqdata is to access and plot DIMAQ data.
+This package contains eight datasets provided by the members of the Data
+Integration Task Force, a multi-disciplinary group of experts
+established as part of the recommendations from the first meeting of the
+WHO Global Platform for Air Quality in Geneva, January 2014.
+
+-   `who_world_map`: `sf` WHO world map shapefile
+
+-   `ground_monitor`: `sf` Yearly global ground monitor station
+
+-   `population_weighted_concentrations`: `df` Yearly population
+    weighted pm2.5 concentrations by country or WHO region
+
+-   `Exceed`: `df` Yearly exceedances by country at 10,15,20,25 spatial
+    scale
+
+-   `pred_2011`: `sf` 2011 Global Predictions spatial resolution (0.1° ×
+    0.1°)
+
+-   `pred_2012`: `sf` 2012 Global Predictions spatial resolution (0.1° ×
+    0.1°)
+
+-   `pred_2013`: `sf` 2013 Global Predictions spatial resolution (0.1° ×
+    0.1°)
+
+-   `pred_2014`: `sf` 2014 Global Predictions spatial resolution (0.1° ×
+    0.1°)
+
+-   `pred_2015`: `sf` 2015 Global Predictions spatial resolution (0.1° ×
+    0.1°)
+
+-   `pred_2016`: `sf` 2016 Global Predictions spatial resolution (0.1° ×
+    0.1°)
 
 ## Installation
 
@@ -20,24 +51,21 @@ devtools::install_github("environmental-intelligence-exeter/dimaqdata")
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+Plot 2016 global predictions
 
 ``` r
 library(dimaqdata)
-grid_data = dimaqdata::pred_all()
-
-#      Longitude Latitude CountryName ISO3                   GBDRegion     GBDSuperRegion          SDGRegion WHORegion WHOIncomeRegion        POP Urban     Mean   Median  Lower95  Upper95   StdDev
-# 6265     14.95   -11.45      Angola  AGO Sub-Saharan Africa, Central Sub-Saharan Africa Sub-Saharan Africa      AFRO             AFR  4311.4014     0 43.09957 40.86143 20.26946 78.69233 15.60509
-# 6266     17.05   -10.55      Angola  AGO Sub-Saharan Africa, Central Sub-Saharan Africa Sub-Saharan Africa      AFRO             AFR   594.7883     0 47.18323 43.77710 21.03159 89.64439 18.88395
-# 6267     20.05    -8.45      Angola  AGO Sub-Saharan Africa, Central Sub-Saharan Africa Sub-Saharan Africa      AFRO             AFR   800.3763     0 49.85325 46.61862 22.07525 96.61560 20.35179
-# 6268     21.65   -15.55      Angola  AGO Sub-Saharan Africa, Central Sub-Saharan Africa Sub-Saharan Africa      AFRO             AFR   153.5165     0 39.51796 36.63955 19.07645 71.91774 13.69798
-# 6269     20.45    -6.95      Angola  AGO Sub-Saharan Africa, Central Sub-Saharan Africa Sub-Saharan Africa      AFRO             AFR  2752.1230     0 49.57304 45.58800 20.80468 98.65109 20.35229
-# 6270     16.35    -9.35      Angola  AGO Sub-Saharan Africa, Central Sub-Saharan Africa Sub-Saharan Africa      AFRO             AFR 25956.2363     0 45.67714 42.92597 20.20633 93.04997 19.03817
-#      Year
-# 6265 2011
-# 6266 2011
-# 6267 2011
-# 6268 2011
-# 6269 2011
-# 6270 2011
+library(raster)
+library(dplyr)
+# filter prediction data by value
+data_new = pred_2016 %>% dplyr::select("Longitude", "Latitude",  "Mean")
+# generate raster from prediction
+r = raster::rasterFromXYZ(data_new)
+# set crs the same as WHO world map
+crs(r) = raster::crs(who_world_map)
+# base plot
+plot(who_world_map$geometry)
+plot(r, add = T)
 ```
+
+<img src="man/figures/README-unnamed-chunk-2-1.png" width="100%" />
