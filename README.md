@@ -62,10 +62,10 @@ data_new = pred_2016 %>% dplyr::select("Longitude", "Latitude",  "Mean")
 # generate raster from prediction
 r = raster::rasterFromXYZ(data_new)
 # set crs the same as WHO world map
-crs(r) = raster::crs(who_world_map)
+crs(r) = crs(who_world_map)
 # base plot
-plot(who_world_map$geometry)
-plot(r, add = T)
+plot(r)
+plot(who_world_map$geometry, add = T)
 ```
 
 <img src="man/figures/README-unnamed-chunk-2-1.png" width="100%" />
