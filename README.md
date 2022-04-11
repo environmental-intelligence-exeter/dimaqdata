@@ -6,7 +6,7 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-This package contains eight datasets provided by the members of the Data
+This package contains ten datasets provided by the members of the Data
 Integration Task Force, a multi-disciplinary group of experts
 established as part of the recommendations from the first meeting of the
 WHO Global Platform for Air Quality in Geneva, January 2014.
@@ -18,8 +18,8 @@ WHO Global Platform for Air Quality in Geneva, January 2014.
 -   `population_weighted_concentrations`: `df` Yearly population
     weighted pm2.5 concentrations by country or WHO region
 
--   `Exceed`: `df` Yearly exceedances by country at 10,15,20,25 spatial
-    scale
+-   `global_exceed`: `df` Yearly exceedances by country at 10,15,20,25
+    spatial scale
 
 -   `pred_2011`: `sf` 2011 Global Predictions spatial resolution (0.1° ×
     0.1°)
