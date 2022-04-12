@@ -6,9 +6,9 @@ Author: c(person(given = "Nathanael",
              family = "Sheehan",
              role = c("aut", "cre"),
              email = "nathanaelsheehan@gmail.com")))
-Maintainer: The package maintainer <nathanaelsheehan@gmail.com>
+Maintainer: Nathanael Sheehan <nathanaelsheehan@gmail.com>
 Description: Access and plot data from the DIMAQ model
-License: What license is it under?
+License: GPL (>= 3)
 Depends:
     R (>= 2.10)
 Imports:

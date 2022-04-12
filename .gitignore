@@ -50,3 +50,4 @@ rsconnect/
 
 # Dont upload raw data
 *.RData
+docs
